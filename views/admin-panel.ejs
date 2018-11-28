@@ -1,0 +1,108 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <a href="/index" class="btn btn-warning">Go back to index page</a>
+</div>
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr> 
+                <th>Users</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Join date</th>
+                <th>Car on the road</th>
+                <th>Car model</th>
+            </tr>
+            <tr>
+                <td>Marie</td>
+                <td>Jackson</td>
+                <td>23</td>
+                <td>marie@gmail.com</td>
+                <td>12/09/18</td>
+                <td>Yes</td>
+                <td>Ford Fiesta</td>
+            </tr>
+            <tr>
+                <td>Steve</td>
+                <td>Bloomgerd</td> 
+                <td>34</td>
+                <td>steve@gmail.com</td>
+                <td>12/09/18</td>
+                <td>No</td>
+                <td>Toyota Avensis</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    
+    <table class="table">
+        <thead>
+            <tr> 
+                <th>Cars</th>
+                <a href="/admin-panel/new" class="btn btn-info">Add a new car to database</a>
+            </tr>
+        </thead>
+
+        <tbody>
+  
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Year of Production</th>
+                <th>Total Qty</th>
+                <th>Update Qty</th>
+                <th>Available Qty</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            
+            <% car.forEach(function(foundCar){ %>
+                <tr>
+                    <td><%= foundCar.make %></td>
+                    <td><%= foundCar.model %></td>
+                    <td><%= foundCar.color %></td>
+                    <td><%= foundCar.year %></td>
+                    <td><%= foundCar.qty %></td>
+                    <td>
+                            
+                        <form action="/admin-panel/<%=foundCar._id %>/changeqty?_method=PUT" method="POST">
+                             <input type="number" min="0" max="20" name="car[qty]">
+                             <input type="submit" class="btn btn-xs btn-info" value="Send">
+                        </form>
+
+                    </td>
+
+                    <td>2</td>
+                    
+                    <td><a href="/admin-panel/<%=foundCar._id%>/edit" span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                    <td><a href="/admin-panel/<%=foundCar._id %>" span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+
+                </tr>
+            <% }); %>
+            
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+<% include ./partials/footer %>

@@ -1,0 +1,21 @@
+/* future css changes */
+
+/* .my-jumbotron {
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.jumbotron {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}     */
+
+.special-flex-mj {
+    display:flex;
+    flex-wrap: wrap;
+}
